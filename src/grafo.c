@@ -40,6 +40,38 @@ void imprimirAdjList(Grafo *graph){
     }    
 }
 
+//Função para imprimir a matriz de incidencia do grafo
+void imprimirMatrizAdj(Grafo *graph){
+    int i,j;
+
+    if(graph == NULL){
+        printf("ERRO: grafo sem nenhum elemento.\n");
+    }
+
+    printf("   ");
+    for(i=0;i<graph->numVertices;i++){
+        printf("[%d]",i+1);
+    }
+    printf("\n");
+
+    for(i=0;i<graph->numVertices;i++){
+        printf("[%d] ",i+1);
+        for(j=0;j<graph->numVertices;j++){
+            int elemConnection = 0;
+            Adjacencia *aux = graph->ListaAdj[i];
+            while(aux != NULL){ //percorre a lista de adjacencia enquanto nao estiver vazia
+                if(aux->vertice == j){
+                    elemConnection = 1;
+                    break;
+                }
+                aux = aux->next;
+            }
+            printf("%d  ",elemConnection);
+        }
+        printf("\n");
+    }
+}
+
 // Função para adicionar uma aresta ao grafo
 void addArestas(Grafo *graph, int origem, int destino){
     //aloca espaço para a nova adjacencia
