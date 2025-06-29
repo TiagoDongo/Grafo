@@ -3,9 +3,9 @@
 int main(){
     int vertices, arestas, origem, destino, inicio;
 
-    printf("Introduza o numero de vertices: ");
+    printf("Introduza o numero de vertices(ordem): ");
     scanf("%d", &vertices);
-    printf("Introduza o numero de arestas: ");
+    printf("Introduza o numero de arestas(dimensao): ");
     scanf("%d", &arestas);
 
     Grafo *novoGrafo = criarGrafo(vertices);
