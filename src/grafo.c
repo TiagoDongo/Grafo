@@ -40,33 +40,39 @@ void imprimirAdjList(Grafo *graph){
     }    
 }
 
-//Função para imprimir a matriz de incidencia do grafo
+//Função para imprimir a matriz de adjacencia do grafo
 void imprimirMatrizAdj(Grafo *graph){
     int i,j;
 
+    //verifica se o esta vazio
     if(graph == NULL){
         printf("ERRO: grafo sem nenhum elemento.\n");
+        return;
     }
 
-    printf("   ");
+    printf("    ");
+    //imprime o cabeçalho das colunas: de 0 ate n-1
     for(i=0;i<graph->numVertices;i++){
-        printf("[%d]",i+1);
+        printf("[%2d]",i);
     }
     printf("\n");
 
+    //imprime as linhas da matriz
     for(i=0;i<graph->numVertices;i++){
-        printf("[%d] ",i+1);
+        printf("[%2d] ",i);
+
+        //verifica a adjacencia com os outros vertices(colunas da mariz)
         for(j=0;j<graph->numVertices;j++){
-            int elemConnection = 0;
-            Adjacencia *aux = graph->ListaAdj[i];
+            int elemConnection = 0; //variavel para indicar se ha conexão (0 - não, 1 - sim)
+            Adjacencia *aux = graph->ListaAdj[i]; //auxiliar para percorrer o loop
             while(aux != NULL){ //percorre a lista de adjacencia enquanto nao estiver vazia
-                if(aux->vertice == j){
-                    elemConnection = 1;
-                    break;
+                if(aux->vertice == j){ //se encontrar o destino na lista de adjacencia
+                    elemConnection = 1; //marca conexão
+                    break; //sai do loop
                 }
-                aux = aux->next;
+                aux = aux->next; //se não encontrar conexão passa para o proximo no da lista de adjacencia
             }
-            printf("%d  ",elemConnection);
+            printf("%2d  ",elemConnection); //imprime 0 ou 1
         }
         printf("\n");
     }

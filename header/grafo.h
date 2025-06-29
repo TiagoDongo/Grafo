@@ -50,4 +50,7 @@ void addArestas(Grafo *graph, int origem, int destino);
  * @param inicio Vértice inicial da busca.
  */
 void BFS(Grafo *graph, int inicio);
+
+//Função para imprimir a matriz de incidencia do grafo
+void imprimirMatrizAdj(Grafo *graph);
 #endif
