@@ -65,7 +65,7 @@ void BFS(Grafo *graph, int inicio){
     */
     int verticeVisitado[MAX_VERTICES], verticePredecessor[MAX_VERTICES];
 
-    //inivializa todos os predecessores como -1 (sem pai)
+    //inivializa todos os predecessores como -1 (sem pai) e visitados como 0 (não visitado)
     for (int i = 0; i < graph->numVertices; i++){
         verticePredecessor[i] = -1;
         verticeVisitado[i] = 0;
@@ -88,8 +88,8 @@ void BFS(Grafo *graph, int inicio){
             int vizinho = adj->vertice;
             // Se o vizinho ainda não foi visitado
             if (!verticeVisitado[vizinho]){
-                verticeVisitado[vizinho] = 1;
-                verticePredecessor[vizinho] = atual;
+                verticeVisitado[vizinho] = 1; //marca como visitado
+                verticePredecessor[vizinho] = atual; //define o predecessor
                 FilaPut(fila, vizinho); // Adiciona o vizinho na fila
             }
             adj = adj->next; //avança para o proximo adjacente
@@ -101,15 +101,15 @@ void BFS(Grafo *graph, int inicio){
     printf("Vertice | Predecessor\n");
     printf("----------------------\n");
 
-    //executa enquanto i for menor que o numero de verticces
+    // Para cada vértice, imprime seu predecessor ou se é a raiz ou não alcançado
     for (int i = 0; i < graph->numVertices; i++){
         if (i == inicio) // se i for igual ao inicio então é a raiz
             printf("   %d    |   raiz\n", i);
-        else if (verticeVisitado[i])
+        else if (verticeVisitado[i]) // se i não for igual ou inicio
             printf("   %d    |   %d\n", i, verticePredecessor[i]);
         else
             printf("   %d    |   (nao alcancado)\n", i);
     }
 
-    Dump(fila); 
+    Dump(fila); //liberta a memoria da fila
 }
