@@ -20,13 +20,13 @@ int main(){
     }
 
     imprimirAdjList(novoGrafo);
+    printf("\n");
+    imprimirMatrizAdj(novoGrafo);
 
     printf("\nVertice de inicio para BFS: ");
     scanf("%d", &inicio);
 
     BFS(novoGrafo, inicio);
-    printf("\n");
-    imprimirMatrizAdj(novoGrafo);
     
     return 0;
 }
