@@ -25,6 +25,8 @@ int main(){
     scanf("%d", &inicio);
 
     BFS(novoGrafo, inicio);
+    printf("\n");
+    imprimirMatrizAdj(novoGrafo);
     
     return 0;
 }
