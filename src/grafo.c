@@ -68,6 +68,7 @@ void BFS(Grafo *graph, int inicio){
     //inivializa todos os predecessores como -1 (sem pai)
     for (int i = 0; i < graph->numVertices; i++){
         verticePredecessor[i] = -1;
+        verticeVisitado[i] = 0;
     }
 
     //criação de uma fila para controlar a ordem de visita dos vértices
@@ -100,8 +101,9 @@ void BFS(Grafo *graph, int inicio){
     printf("Vertice | Predecessor\n");
     printf("----------------------\n");
 
+    //executa enquanto i for menor que o numero de verticces
     for (int i = 0; i < graph->numVertices; i++){
-        if (i == inicio)
+        if (i == inicio) // se i for igual ao inicio então é a raiz
             printf("   %d    |   raiz\n", i);
         else if (verticeVisitado[i])
             printf("   %d    |   %d\n", i, verticePredecessor[i]);
